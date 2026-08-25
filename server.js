@@ -5,9 +5,11 @@
 require('dotenv').config();
 const express = require('express');
 const cron = require('node-cron');
+const cors = require('cors');
 const { runPipelineForActiveUsers } = require('./lib/orchestrator');
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 app.use('/api/accounts', require('./routes/accounts'));
